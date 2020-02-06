@@ -28,17 +28,20 @@ class Calculator extends React.Component {
 
                     onChange={(event) => {
 
-                        this._updateNumber(event.target.value)
+                        this._updateNumber('num2', event.target.value)
                     }
                     }
                 />
                 <br />
                 <br />
-                <button>+</button>
-                <button>-</button>
-                <button>/</button>
-                <button>*</button>
+                <button onClick={this._add}>+</button>
+                <button onClick={this._sub}>-</button>
+                <button onClick={this._div}>/</button>
+                <button onClick={this._mult}>*</button>
                 <br />
+                <br />
+
+                <div>{this.state.result}</div>
 
             </div>
         );
@@ -46,9 +49,38 @@ class Calculator extends React.Component {
 
     _updateNumber = (key, newNumber) => {
         this.setState({
-            [key]: newNumber
+            [key]: parseInt(newNumber, 10)
         });
 
+
+    }
+    _add = () => {
+        const result = this.state.num1 + this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+    _sub = () => {
+        const result = this.state.num1 - this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+    _div = () => {
+        const result = this.state.num1 / this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+    _mult = () => {
+        const result = this.state.num1 * this.state.num2
+        this.setState({
+            result
+
+        });
     }
 
 
